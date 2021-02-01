@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app():
@@ -8,9 +8,15 @@ def create_app():
 
     @app.route('/')
     def home():
-        return 'Welcome to pysimplify'
+        return render_template('index.html')
 
-    from . import views
-    app.register_blueprint(views.home)
+    from .views import home as home_blueprint
+    app.register_blueprint(home_blueprint)
+
+    from .login import user as user_blueprint
+    app.register_blueprint(user_blueprint)
+
+    from .routes import skile
+    app.register_blueprint(skile.skt)
 
     return app
