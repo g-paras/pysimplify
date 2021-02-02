@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template
 
-user = Blueprint('user', __name__, url_prefix='/login')
+auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@user.route('/')
+@auth.route('/login')
 def users():
     return render_template('login.html')

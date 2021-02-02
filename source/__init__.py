@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 
 
 def create_app():
@@ -6,17 +6,35 @@ def create_app():
 
     app.config.from_pyfile('settings.py')
 
+    # default route to home page
     @app.route('/')
     def home():
         return render_template('index.html')
 
-    from .views import home as home_blueprint
-    app.register_blueprint(home_blueprint)
+    @app.route('/funt')
+    def funts():
+        return render_template('layout.html')
 
-    from .login import user as user_blueprint
-    app.register_blueprint(user_blueprint)
+    # handling page not found errors
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return 'Page not found', 404
 
-    from .routes import skile
-    app.register_blueprint(skile.skt)
+    # handling method not allowed request
+    @app.errorhandler(405)
+    def method_not_allowed(e):
+        return 'Method not allowed', 405
+
+    # registering home blueprints
+    from .routes import views
+    app.register_blueprint(views.home)
+
+    # registering login, logout and register route
+    from .routes import auth
+    app.register_blueprint(auth.auth)
+
+    # registering courses page blueprint
+    from .routes import courses
+    app.register_blueprint(courses.courses)
 
     return app
