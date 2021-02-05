@@ -1,0 +1,25 @@
+{% extends "layout.html" %} {% block title %} os module | pySimplify {% endblock
+%} {% block head %} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='css/prism.css')}}" />
+<script src="{{url_for('static', filename='js/prism.js')}}"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&display=swap"
+  rel="stylesheet"
+/>
+{% endblock %} {% block content%}
+<div class="container mx-auto">
+  <pre>
+    <code class="language-python">
+import numpy as np
+
+# declare a numpy array 
+arr = np.array([1, 2, 3, 4])
+
+# square of all elements
+arr = arr**2
+        </code
+    >
+    </pre>
+</div>
+{% endblock %}

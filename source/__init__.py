@@ -11,6 +11,10 @@ def create_app():
     def home():
         return render_template('index.html')
 
+    @app.route('/sometest')
+    def some_test():
+        return render_template('basic.html')
+
     # handling page not found errors
     @app.errorhandler(404)
     def page_not_found(e):
