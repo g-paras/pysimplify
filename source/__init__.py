@@ -11,10 +11,6 @@ def create_app():
     def home():
         return render_template('index.html')
 
-    @app.route('/funt')
-    def funts():
-        return render_template('layout.html')
-
     # handling page not found errors
     @app.errorhandler(404)
     def page_not_found(e):
