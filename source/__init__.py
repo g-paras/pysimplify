@@ -6,11 +6,6 @@ def create_app():
 
     app.config.from_pyfile('settings.py')
 
-    # default route to home page
-    @app.route('/')
-    def home():
-        return render_template('index.html')
-
     @app.route('/sometest')
     def some_test():
         return render_template('basic.html')
@@ -36,5 +31,8 @@ def create_app():
     # registering courses page blueprint
     from .routes import courses
     app.register_blueprint(courses.courses)
+
+    from .routes import tutorials
+    app.register_blueprint(tutorials.tuts)
 
     return app
