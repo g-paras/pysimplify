@@ -27,11 +27,17 @@
           class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
           href="/"
         >
-          <img
+          <!-- <img
             src="{{url_for('static', filename='img/pysimplify-logo-min.svg')}}"
             alt=""
           />
-          <span class="ml-3 text-xl">pySimplify</span>
+          <span class="ml-3 text-xl">pySimplify</span> -->
+          <img
+            src="{{ url_for('static', filename='img/brand.svg') }}"
+            alt=""
+            srcset=""
+            width="200"
+          />
         </a>
         <nav
           class="md:ml-auto flex flex-wrap items-center text-base justify-center"
@@ -110,7 +116,11 @@
               ></path>
             </svg>
           </a>
-          <a class="ml-3 text-gray-500">
+          <a
+            href="https://twitter.com/gparas_"
+            target="_blank"
+            class="ml-3 text-gray-500"
+          >
             <svg
               fill="currentColor"
               stroke-linecap="round"
@@ -144,7 +154,11 @@
               ></path>
             </svg>
           </a>
-          <a class="ml-3 text-gray-500">
+          <a
+            href="https://in.linkedin.com/in/paras-gupta-34a780166"
+            target="_blank"
+            class="ml-3 text-gray-500"
+          >
             <svg
               fill="currentColor"
               stroke="currentColor"
