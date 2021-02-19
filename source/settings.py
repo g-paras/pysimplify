@@ -1,3 +1,11 @@
 from os import environ
 
+# APP SETTINGS
 SECRET_KEY = environ.get('SECRET_KEY')
+
+# DATABASE SETTINGS
+
+# FLASK USER SETTINGS
+APP_NAME = 'pySimplify'
+
+# FLAKS MAIL SETTINGS
