@@ -11,3 +11,8 @@ def index():
 @home.route('/about')
 def about():
     return render_template('about.html')
+
+
+@home.route('/quizes')
+def quizes():
+    return render_template('quiz.html')

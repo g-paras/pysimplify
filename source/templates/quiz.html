@@ -1,0 +1,81 @@
+{% extends "layout.html" %} {% block title %} os module | pySimplify {% endblock
+%} {% block head %} {{ super() }}
+<script src="https://unpkg.com/vue@3.0.2"></script>
+{% endblock %} {% block content%}
+<div class="flex w-full h-screen justify-center mt-32" id="app">
+  <div class="w-full max-w-xl">
+    <h1 class="font-bold text-5xl text-center text-indigo-700">Python Quiz</h1>
+    <div class="bg-white p-12 rounded-lg shadow-lg w-full mt-8 mx-2 sm:mx-auto">
+      <div v-if="index < count">
+        <p class="text-2xl font-bold">${ questions[index]['question'] }$</p>
+        <label
+          :for="key"
+          class="block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg"
+          v-for="answer, key in questions[index]['answers']"
+          :class="{'hover:bg-gray-100 cursor-pointer' : selectedAnswer == ''}, {'bg-red-200' : selectedAnswer == key}, {'bg-green-200' : key == questions[index]['correctAnswer'] && selectedAnswer != ''}"
+        >
+          <input
+            type="radio"
+            :id="key"
+            class="hidden"
+            :value="key"
+            @change="answered($event)"
+            :disabled="selectedAnswer !== ''"
+            v-model="selectedAnswer"
+          />
+          ${answer}$
+        </label>
+      </div>
+
+      <div v-else>
+        <h1 class="text-bold text-3xl">Results</h1>
+        <div class="flex justify-start space-x-4 mt-6 items-center">
+          <p>
+            Correct Answers:
+            <span class="text-2xl font-bold text-green-700"
+              >${ correctAnswers }$</span
+            >
+          </p>
+          <p>
+            Wrong Answers:
+            <span class="text-2xl font-bold text-red-700"
+              >${ wrongAnswers }$</span
+            >
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 flow-root">
+        <button
+          class="float-right text-white bg-indigo-600 font-bold tracking-wide rounded-full px-5 py-2 focus:outline-none"
+          :class="{'cursor-not-allowed disabled': selectedAnswer==''}"
+          :disabled="selectedAnswer === ''"
+          v-show="index < count-1"
+          @click="nextQuestion"
+        >
+          Next &gt;
+        </button>
+
+        <button
+          class="float-right text-white bg-indigo-600 font-bold tracking-wide rounded-full px-5 py-2 focus:outline-none"
+          :class="{'cursor-not-allowed disabled': selectedAnswer==''}"
+          :disabled="selectedAnswer === ''"
+          v-show="index === count-1"
+          @click="showResult"
+        >
+          Finish
+        </button>
+
+        <button
+          class="float-right text-white bg-indigo-600 font-bold tracking-wide rounded-full px-5 py-2 focus:outline-none"
+          v-show="index === count"
+          @click="resetQuiz"
+        >
+          Play Again
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{url_for('static', filename='js/quiz.js')}}"></script>
+{% endblock %}
