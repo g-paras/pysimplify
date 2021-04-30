@@ -1,13 +1,15 @@
-{% extends "layout.html" %} {% block title %} os module | pySimplify {% endblock
-%} {% block head %} {{ super() }}
+{% extends "layout.html" %} {% block title %} Python Quiz | pySimplify {%
+endblock %} {% block head %} {{ super() }}
 <script src="https://unpkg.com/vue@3.0.2"></script>
 {% endblock %} {% block content%}
-<div class="flex w-full h-screen justify-center mt-32" id="app">
+<div class="flex w-full h-screen justify-center mt-12 sm:mt-32" id="app">
   <div class="w-full max-w-xl">
     <h1 class="font-bold text-5xl text-center text-indigo-700">Python Quiz</h1>
     <div class="bg-white p-12 rounded-lg shadow-lg w-full mt-8 mx-2 sm:mx-auto">
       <div v-if="index < count">
-        <p class="text-2xl font-bold">${ questions[index]['question'] }$</p>
+        <p class="text-xl sm:text-2xl font-bold">
+          ${ questions[index]['question'] }$
+        </p>
         <label
           :for="key"
           class="block mt-4 border border-gray-300 rounded-lg py-2 px-6 text-lg"
