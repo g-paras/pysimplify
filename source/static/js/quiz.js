@@ -7,6 +7,7 @@ const app = Vue.createApp({
       correctAnswers: 0,
       wrongAnswers: 0,
       message: "success",
+      start: 0,
       questions: [
         {
           question: "Which keyword is used to declare a function",
